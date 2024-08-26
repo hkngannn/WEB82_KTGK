@@ -22,15 +22,15 @@ export const posts = async (req, res) => {
 export const updatePost = async (req, res) => {
   const { userId } = req.data;
   const { content } = req.body;
-  const { id } = req.params 
+  const { postId } = req.params 
   try {
-    const findPost = await getPost({_id: id, userId})
+    const findPost = await getPost({postId, userId})
     if (!findPost) throw new Error("Post not found");
     findPost.content = content
     findPost.save();
     res.status(200).send({
         message: 'Updated!',
-        data: findPost,
+        post: findPost,
     })   
   } catch (error) {
     res.status(500).send({

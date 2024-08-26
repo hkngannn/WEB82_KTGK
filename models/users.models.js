@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
 const UserModel = new mongoose.model(COLLECTIONS.USERS, userSchema);
 
 export const getUser = (data) => {
-    return UserModel.find({ data });
+    return UserModel.findOne({ data });
   };
   
   export const createUser = (data) => {
